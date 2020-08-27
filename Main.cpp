@@ -8,13 +8,11 @@ void test(){
 }
 int main(){
     std::function<void (void)> f;
-    std::function<void (void)> n;
     f = &test;
-    SimpleMenuItem z("Star", n);
     Menu b;
     Menu* q = b.addsubMenu("something");
     SimpleMenuItem* a = b.addItem("Start", f);
-    SimpleMenuItem* c = b.addItem("Star", n);
+    SimpleMenuItem* c = b.addItem("Star", f);
     SimpleMenuItem* j =  q -> addItem("aq", f);
     b.run();
 }
