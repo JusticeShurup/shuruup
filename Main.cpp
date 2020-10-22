@@ -28,12 +28,11 @@ int main(){
     StudentRegistry *registry = StudentRegistry::getInstance();
     registry -> addStudent(&p);
     registry -> addStudent(&p1);
-    registry->getStudent(0)->printLong();
     StudentVisitor *visitor;
     StudentVisitor *ArchieversVisitor;
     visitor = new BriefPrintVisitor();
     ArchieversVisitor = new HighArchieversVisitor();
-    //registry -> visitStudents(visitor);
+    registry -> visitStudents(visitor);
     registry -> visitStudents(ArchieversVisitor);
-
+    return 0;
 }

@@ -25,18 +25,3 @@ void Student::printSubjects(){
         std::cout << m.first << " " << m.second << std::endl;
     }
 }
-std::string Student::getFname(){
-    return first_name;
-}
-std::string Student::getMname(){
-    return middle_name;
-}
-std::string Student::getLname(){
-    return last_name;
-}
-std::string Student::getGroup(){
-    return group_;
-}
-std::map<std::string, int> Student::getMarks(){
-    return marks_;
-}

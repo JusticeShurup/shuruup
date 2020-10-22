@@ -9,12 +9,6 @@ class Student{
     void printLong();
     void printShort();
     void printSubjects();
-    std::string getFname();
-    std::string getMname();
-    std::string getLname();
-    std::string getGroup();
-    std::map<std::string, int> getMarks();
-    private:
     std::string first_name;
     std::string middle_name;
     std::string last_name;

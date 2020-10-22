@@ -3,7 +3,8 @@ void BriefPrintVisitor::StartVisit(){
     has_students = false;
 }
 void BriefPrintVisitor::VisitStudent(int number, Student *a){
-    std::cout << number << " " << std::endl;
+    
+    std::cout << number + 1 << " ";
     a -> printShort();
     has_students = true;
 }

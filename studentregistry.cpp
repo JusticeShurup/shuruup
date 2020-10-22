@@ -8,21 +8,11 @@ void StudentRegistry::addStudent(Student *a){
     students.push_back(a);
 }
 void StudentRegistry::removeStudent(Student *a){
-    bool flag = true; 
     for(int i = 0; i < students.size(); i++){
-        flag = true;
-        if (a -> getFname() != students[i] -> getFname())
-            flag = false;
-        if (a -> getMname() != students[i] -> getMname())
-            flag = false;
-        if (a -> getLname() != students[i] -> getLname())
-            flag = false;
-        if (a -> getGroup() != students[i] -> getGroup())
-            flag = false;
-        if (a -> getMarks() != students[i] -> getMarks())
-            flag = false;
-        if (flag)
-            students.erase(students.begin()+i);
+        if (a-> first_name == students[i]-> first_name && a->middle_name == students[i]-> middle_name 
+        && a -> last_name == students[i] -> last_name && a -> group_ == students[i] -> group_ && a -> marks_ == students[i] -> marks_){
+            students.erase(students.begin() + i);
+        }
     }   
 }
 StudentRegistry *StudentRegistry::getInstance(){
