@@ -3,8 +3,9 @@
 #include <iostream>
 #include <vector>
 #include "student.h"
+#include "Visitors.h"
 class StudentRegistry{
-public:
+    public:
     static StudentRegistry *getInstance();
     StudentRegistry();
     void addStudent(Student *a);
@@ -12,8 +13,9 @@ public:
     void removeStudent(int number);
     Student* getStudent(int number);
     int getStudentCount();
-private:
+    void visitStudents(StudentVisitor *);
+    private:
     static StudentRegistry *instance;
-    std::vector<Student> students;
+    std::vector<Student *> students;
 };
 #endif

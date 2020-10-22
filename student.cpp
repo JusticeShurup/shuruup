@@ -16,8 +16,8 @@ void Student::printLong(){
     }
 }
 void Student::printShort(){
-    std::cout << first_name << std::endl;
-    std::cout << middle_name << std::endl;
+    std::cout << first_name << " ";
+    std::cout << middle_name << " ";
     std::cout << last_name << std::endl;
 }
 void Student::printSubjects(){
