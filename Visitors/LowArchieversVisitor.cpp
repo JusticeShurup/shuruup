@@ -3,7 +3,7 @@ void LowArchieversVisitor::StartVisit(){
     has_students = false;
 }
 void LowArchieversVisitor::VisitStudent(int number, Student *a){
-    std::map<std::string, int> marks = a -> marks_);
+    std::map<std::string, int> &marks = a -> marks_;
     bool isExcellent = true;
     for (auto m : marks){
         if(m.second == 2){
