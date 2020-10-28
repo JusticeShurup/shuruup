@@ -7,13 +7,9 @@ Student::Student(std::string firstname, std::string middlename, std::string last
     marks_ = marks;
 }
 void Student::printLong(){
-    std::cout << first_name << std::endl;
-    std::cout << middle_name << std::endl;
-    std::cout << last_name << std::endl;
-    std::cout << group_ << std::endl;
-    for (auto m : marks_){
-        std::cout << m.first << " " << m.second << std::endl;
-    }
+    printShort();
+    std::cout << group_ << " ";
+    printSubjects();
 }
 void Student::printShort(){
     std::cout << first_name << " ";

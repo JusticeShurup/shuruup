@@ -2,9 +2,9 @@
 void DetailedPrintVisitor::StartVisit(){
     has_students = false;
 }
-void DetailedPrintVisitor::VisitStudent(int number, Student *a){
-    std::cout << number << " " << std::endl;
-    a -> printLong();
+void DetailedPrintVisitor::VisitStudent(int number, Student *b){
+    std::cout << number + 1 << " ";
+    b -> printLong();
     has_students = true;
 }
 void DetailedPrintVisitor::finishVisit(){

@@ -4,7 +4,7 @@
 class DetailedPrintVisitor : public StudentVisitor{ // печатает полный список студентов
     public:
     void StartVisit() override;
-    void VisitStudent(int number, Student *student) override;
+    void VisitStudent(int number, Student *a) override;
     void finishVisit() override;
     private:
     bool has_students;

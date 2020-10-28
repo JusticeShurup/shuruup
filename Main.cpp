@@ -7,8 +7,9 @@
 #include "studentregistry.h"
 #include "Visitors.h"
 void ListStudentCommand(){
-    DetailedPrintVisitor v;
-    StudentRegistry::getInstance() -> visitStudents(&v);
+    StudentVisitor *v;
+    v = new DetailedPrintVisitor;
+    StudentRegistry::getInstance() -> visitStudents(v);
 }
 void AddStudentCommand(){
     bool flag = true;
@@ -41,6 +42,7 @@ void AddStudentCommand(){
     StudentRegistry::getInstance() -> addStudent(&e);
 }
 int main(){
+    StudentRegistry *registry = StudentRegistry::getInstance();
     std::map<std::string, int> marks;
     marks["History"] = 5;
     std::map<std::string, int> marks1;
@@ -57,7 +59,6 @@ int main(){
     b.run();
     Student p("Oleg", "Grishin","Fazlovich", "Gum", marks);
     Student p1("Kirill", "Machehin","Fazlovich", "Info", marks1);
-    StudentRegistry *registry = StudentRegistry::getInstance();
     registry -> addStudent(&p);
     registry -> addStudent(&p1);
     StudentVisitor *visitor;
