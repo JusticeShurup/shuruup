@@ -5,5 +5,6 @@
 #include "Visitors/BriefPrintVisitor.h"
 #include "Visitors/DetailedPrintVisitor.h"
 #include "Visitors/HighArchieversVisitor.h"
+#include "Visitors/LowArchieversVisitor.h"
 
 #endif
