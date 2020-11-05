@@ -4,7 +4,7 @@
 #include <vector>
 #include "student.h"
 #include "Visitors.h"
-class StudentRegistry{
+class StudentRegistry{ // StudentRegistry
     public:
     static StudentRegistry *getInstance();
     StudentRegistry();

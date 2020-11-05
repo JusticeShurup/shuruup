@@ -44,4 +44,13 @@ void Menu::run(){
         printMenu();
         flag = check();
     }
+}
+void Menu::setStartupCommand(std::function<void (void)> command){
+    startup_command = &command;
+}
+void Menu::setBeforeSelectCommand(std::function<void (void)> command){
+    before_select_command = &command;  
 } 
+void Menu::setTearDownCommand(std::function<void (void)> command){
+    tear_down_command = &command;
+}

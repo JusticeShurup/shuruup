@@ -10,6 +10,5 @@ class SimpleMenuItem : public MenuItem{
     void run() override;
     private:
     std::function<void (void)> f;
-    
 };
 #endif
