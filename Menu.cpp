@@ -39,11 +39,14 @@ bool Menu::check(){
     return true;
 }
 void Menu::run(){
+    startup_command();
     bool flag = true;
     while(flag){
+        before_select_command();
         printMenu();
         flag = check();
     }
+    tear_down_command();
 }
 void Menu::setStartupCommand(std::function<void (void)> command){
     startup_command = &command;

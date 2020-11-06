@@ -2,6 +2,9 @@
 #define _HELP_COMMANDS_H_
 class HelpCommands{
     public:
+    static void selectStudentCommand();
+    static void showSelectedCommand();
+    static void deselectStudentCommand();
     static void editFirstNameCommand();
     static void editMiddleNameCommand();
     static void editLastNameCommand();
