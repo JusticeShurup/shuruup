@@ -6,6 +6,7 @@ class HighArchieversVisitor : public StudentVisitor{ // печатает отл�
     void StartVisit() override;
     void VisitStudent(int number, Student *student) override;
     void finishVisit() override;
+    bool getState() override;
     private:
     bool has_students;
 };

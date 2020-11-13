@@ -4,7 +4,7 @@
 class EditContext{
     public:
     static EditContext *getInstance();
-    Student student;
+    Student *student;
     private:
     EditContext();
     static EditContext *instance;

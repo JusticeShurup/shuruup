@@ -6,5 +6,6 @@ class StudentVisitor{
     virtual void StartVisit() = 0;
     virtual void VisitStudent(int number, Student *student) = 0;
     virtual void finishVisit() = 0;
+    virtual bool getState() = 0;
 };
 #endif

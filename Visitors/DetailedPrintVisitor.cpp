@@ -12,3 +12,7 @@ void DetailedPrintVisitor::finishVisit(){
         std::cout << "No students in database" << std::endl;
     }
 }
+bool DetailedPrintVisitor::getState(){
+    bool state = has_students;
+    return state;
+}

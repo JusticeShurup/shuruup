@@ -1,5 +1,5 @@
 #include "Menu.h"
-#include <stdexcept>
+#include <functional>
 Menu::Menu(std::string title) : MenuItem(title){
     isSubMenu = true;
 }
@@ -39,21 +39,25 @@ bool Menu::check(){
     return true;
 }
 void Menu::run(){
-    startup_command();
+    if (startup_command){ 
+        if (!startup_command()) return;
+    }
     bool flag = true;
-    while(flag){
-        before_select_command();
+    while(flag){    
+        if (before_select_command)
+            before_select_command();
         printMenu();
         flag = check();
     }
-    tear_down_command();
+    if (tear_down_command)
+        tear_down_command();
 }
-void Menu::setStartupCommand(std::function<void (void)> command){
-    startup_command = &command;
+void Menu::setStartupCommand(std::function<bool(void)> command){
+    startup_command = command;
 }
 void Menu::setBeforeSelectCommand(std::function<void (void)> command){
-    before_select_command = &command;  
+    before_select_command = command;  
 } 
 void Menu::setTearDownCommand(std::function<void (void)> command){
-    tear_down_command = &command;
+    tear_down_command = command;
 }

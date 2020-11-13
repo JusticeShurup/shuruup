@@ -6,6 +6,7 @@ class DetailedPrintVisitor : public StudentVisitor{ // печатает полн
     void StartVisit() override;
     void VisitStudent(int number, Student *a) override;
     void finishVisit() override;
+    bool getState() override;
     private:
     bool has_students;
 };

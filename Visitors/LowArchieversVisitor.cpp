@@ -21,3 +21,7 @@ void LowArchieversVisitor::finishVisit(){
         std::cout << "No students in database" << std::endl;
     }
 }
+bool LowArchieversVisitor::getState(){
+    bool state = has_students;
+    return state;
+}

@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include "MenuItem.h"
+#include "EditContext.h"
 #include "SimpleMenuItem.h"
 #include "student.h"
 #include <vector>
@@ -9,35 +10,30 @@
 #include <stdexcept>
 #include "Commands.h"
 int main(){
-    UpperCommands u;
     StudentRegistry *registry = StudentRegistry::getInstance();
-    std::map<std::string, int> marks;
-    marks["History"] = 5;
-    std::map<std::string, int> marks1;
-    marks1["Math"] = 2;
-    marks1["History"] = 5;
-    Student p("Oleg", "Grishin","Fazlovich", "Gum", marks);
-    registry -> addStudent(&p);
-    std::function<void (void)> f = UpperCommands::addStudentCommand;
-    std::function<void (void)> f1 = UpperCommands::listStudentCommand;
-    std::function<void (void)> f2 = UpperCommands::deleteStudentCommand;
-    std::function<void (void)> f3 = UpperCommands::showHighArchieversCommand;
-    std::function<void (void)> f4 = UpperCommands::showLowArchieversCommand;
+    EditContext *context = EditContext::getInstance();
     Menu b;
     Menu* q = b.addsubMenu("UpperCommands");
-    SimpleMenuItem* o = q -> addItem("AddStudent", f);
-    SimpleMenuItem* a = q -> addItem("ListStudents", f1);
-    SimpleMenuItem* a1 = q -> addItem("DeleteStudent", f2);
-    SimpleMenuItem* a2 = q -> addItem("HighArchievers", f3);
-    SimpleMenuItem* a3 = q -> addItem("LowArchievers", f4);
+    Menu* q1 = b.addsubMenu("HelpCommands");
+    std::function<bool(void)> h1 = HelpCommands::selectStudentCommand;
+    //Команды без EditContext
+    SimpleMenuItem* o = q -> addItem("Add student", UpperCommands::addStudentCommand);
+    SimpleMenuItem* a = q -> addItem("List of students", UpperCommands::listStudentCommand);
+    SimpleMenuItem* a1 = q -> addItem("Delete student", UpperCommands::deleteStudentCommand);
+    SimpleMenuItem* a2 = q -> addItem("HighArchievers", UpperCommands::showHighArchieversCommand);
+    SimpleMenuItem* a3 = q -> addItem("LowArchievers", UpperCommands::showLowArchieversCommand);
+    //Команды с EditContext
+    // std::function<void(void)> h2 = HelpCommands::showSelectedCommand; SimpleMenuItem* a5 = q1->addItem("Show selected student", h2);
+    // std::function<void(void)> h3 = HelpCommands::deselectStudentCommand; SimpleMenuItem* a6 = q1->addItem("Deselect student", h3);
+    SimpleMenuItem* a7 = q1->addItem("Edit first name student", HelpCommands::editFirstNameCommand);
+    SimpleMenuItem* a8 = q1->addItem("Edit surname", HelpCommands::editMiddleNameCommand);
+    SimpleMenuItem* a9 = q1->addItem("Edit patronymic", HelpCommands::editLastNameCommand);
+    SimpleMenuItem* a10 = q1->addItem("Edit group", HelpCommands::editGroupCommand);
+    SimpleMenuItem* a11 = q1->addItem("Edit Mark", HelpCommands::editMarkCommand);
+    SimpleMenuItem* a12 = q1->addItem("Add mark", HelpCommands::addMarkCommand);
+    SimpleMenuItem* a13 = q1->addItem("Delete mark", HelpCommands::deleteMarkCommand);
+    SimpleMenuItem* a14 = q1->addItem("Clear marks", HelpCommands::clearMarksCommand);
+    q1->setStartupCommand(h1);
     b.run();
-    Student p1("Kirill", "Machehin","Fazlovich", "Info", marks1);
-    registry -> addStudent(&p1);
-    StudentVisitor *ArchieversVisitor;
-    StudentVisitor *visitor;
-    visitor = new BriefPrintVisitor();
-    ArchieversVisitor = new HighArchieversVisitor();
-    registry -> visitStudents(visitor);
-    //registry -> visitStudents(ArchieversVisitor);
     return 0;
 }
